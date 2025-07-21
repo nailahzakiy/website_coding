@@ -7,10 +7,14 @@
   }
   
   body {
-    background: #f9f9f9;
-    color: #333;
+    color:#333;
+    background-image: url('assets/abstrak2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: top center;
   }
-  
+
   /* ======== 🌟 MAIN HEADER ======== */
   .main-header {
     display: flex;
@@ -19,17 +23,19 @@
     left: 0;
     width: 100%;
     padding: 24px 80px;
-    background-color: white;
+    background-color: rgba(20, 25, 46, 0.7); /* deep indigo-blue dengan transparansi */
+    backdrop-filter: blur(8px);
+    color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     z-index: 1000;
   }
   
   .logo {
     font-size: 1.4rem;
     font-weight: bold;
-    color: #408b61;
+    color: #f2d479;
   }
   
   .nav-links {
@@ -40,13 +46,13 @@
   
   .nav-links a {
     text-decoration: none;
-    color: #444;
+    color: #fdf6e3;
     font-weight: 500;
     transition: color 0.3s ease;
   }
   
   .nav-links a:hover {
-    color: #73b482;
+    color: #f2d479;
   }
   
   /* ======== 💫 HERO SECTION ======== */
@@ -55,7 +61,6 @@
     align-items: center;
     justify-content: center;
     padding: 80px;
-    background: #ffffff;
     height: 100vh;
     gap:40px;
     margin-top:80px;
@@ -64,9 +69,29 @@
   .hero-left img {
     max-width: 100%;
     height: auto;
-    display: block;
+    object-fit: cover;
+    animation: float 6s ease-in-out infinite, glow 4s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
   }
-  
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+  }
+  100% {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.6));
+  }
+}
+
   .hero-left, .hero-right{
     flex:1;
     min-width: 0;
@@ -78,37 +103,98 @@
   .hero-right {
     max-width: 50%;
     padding: 0 40px;
+    animation: fadeInUp 1s ease-out both;
+    animation-delay: 0.3s;
   }
-  
-  .hero-right h1 {
+  @keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-right h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-  }
+    animation: fadeInUp 1s ease-out both;
+    animation-delay: 0.3s;
+}
   
-  .hero-right p {
+.hero-right p {
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
-  }
-  
-  .cta-button {
+    animation: fadeInUp 1s ease-out both;
+    animation-delay: 0.6s;
+}
+
+.hero.animate {
+  animation: fadeInUp 1s ease-out;
+}
+
+.cta-button {
     display: inline-block;
-    background-color: #73b482;
-    color: white;
+    background-color: #e7b6ff; 
+    color: #2e1d3b;
     padding: 12px 24px;
     border-radius: 8px;
     text-decoration: none;
     transition: background 0.3s ease;
-  }
+    animation: fadeInUp 1s ease-out both;
+    animation-delay: 0.9s;
+}
   
-  .cta-button:hover {
-    background-color: #5a9469;
+.cta-button:hover {
+    background-color: #ffc9c9;
+    color: #000;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6),
+              0 0 30px rgba(149, 115, 180, 0.4);
+    transform: scale(1.05);
+}
+
+.stars-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.shooting-star {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(white, rgba(255,255,255,0));
+  opacity: 0.8;
+  animation: shoot 1.8s linear forwards;
+  transform: rotate(-135deg);
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(1px);
+  border-radius: 2px;
+}
+@keyframes shoot {
+  0% {
+    transform: translate(0, 0) rotate(-135deg);
+    opacity: 1;
   }
-  
+  100% {
+    transform: translate(-600px, 600px) rotate(-135deg);
+    opacity: 0;
+  }
+}
+
   /* ======== 🖼️ PROJECT PREVIEW ======== */
   .project-preview {
     min-height: 100vh;
     padding: 100px 60px;
-    background-color: #eef6f1;
     text-align: center;
     display: flex;
     align-items: center;
@@ -121,7 +207,7 @@
   .project-preview h2 {
     font-size: 2.2rem;
     margin-bottom: 1rem;
-    color: #408b61;
+    color: #2e1d3b;
   }
   
   .preview-grid {
@@ -155,13 +241,12 @@
   
   .preview-card a {
     text-decoration: none;
-    color: #408b61;
+    color: #2e1d3b;
     font-weight: bold;
   }
  
 /* =========== ⭐About Me Section ===========*/
   .about-me {
-  background-color: #ffffff;
   padding: 100px 60px;
   height: 100vh;
   display: flex;
@@ -188,7 +273,7 @@
 .about-text h2 {
   font-size: 2.2rem;
   margin-bottom: 1rem;
-  color: #408b61;
+  color: #2e1d3b;
 }
 
 .about-text p {
@@ -211,7 +296,6 @@
 /* =========== 🤝 Partnership Section ===========*/
 
 .partnership {
-  background-color: #eef6f1;
   padding: 100px 60px;
   text-align: center;
   height: 100vh;
@@ -228,7 +312,7 @@
 .partnership h2 {
   font-size: 2.2rem;
   margin-bottom: 1rem;
-  color: #408b61;
+  color: #2e1d3b;
 }
 
 .partnership p {
@@ -258,7 +342,6 @@
 
 /* =========== 🎁 Product Section ===========*/
 .product-service {
-  background-color: #fefefe;
   padding: 100px 60px;
   text-align: center;
   min-height: 100vh;
@@ -274,7 +357,7 @@
 .product-service h2 {
   font-size: 2.2rem;
   margin-bottom: 1rem;
-  color: #408b61;
+  color: #2e1d3b;
 }
 
 .section-intro {
@@ -320,7 +403,6 @@
 
 /* =========== 📞 Contact ===========*/
 .contact {
-  background-color: #eef6f1;
   padding: 100px 60px;
   min-height: 100vh;
   text-align: center;
@@ -336,7 +418,7 @@
 .contact h2 {
   font-size: 2.2rem;
   margin-bottom: 1rem;
-  color: #408b61;
+  color: #2e1d3b;
 }
 
 .contact .section-intro {
@@ -378,7 +460,7 @@
 }
 
 .contact-form button {
-  background-color: #73b482;
+  background-color: #2e1d3b;
   color: white;
   padding: 12px;
   border: none;
@@ -388,12 +470,11 @@
 }
 
 .contact-form button:hover {
-  background-color: #5a9469;
+  background-color: #e7b6ff;
 }
 
 .main-footer {
-  background-color: #408b61;
-  color: white;
+  color: #333;
   padding: 40px 60px;
   text-align: center;
 }
@@ -423,7 +504,7 @@
 }
 
 .footer-socials a:hover {
-  color: #cdebd8;
+  color: #2e1d3b;
 }
 
 

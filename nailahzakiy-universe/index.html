@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
+        
         <header class="main-header">
             <div class="logo">nailahzakiy universe</div>
             <nav class="nav-links">
@@ -18,13 +19,16 @@
                 <a href="#contact">Contact</a>
             </nav>
         </header>
-          
+        <script src="script.js"></script>
+
+        <div class="stars-container"></div>
+
         <!--Hero Section -->
-        <section class="hero">
+        <section id="hero" class="hero">
             <div class="hero-left">
-                <img src="assets/hero-illustration.jpg" alt="Ilustrasi Nailah">
+                <img src="assets/siluet.png" alt="Ilustrasi Nailah">
             </div>
-            <div class="hero-right">
+            <div class="hero-right hero-animate">
                 <h1 class="hero-title">Exploring Everything Around the Universe.</h1>
                 <p> Welcome to Nailah's Digital Space. A place where engineering, art, and literature come together. </p>
                 <a href="#project-preview" class="cta-button">View Portfolio</a>
@@ -150,5 +154,11 @@
                 </div>
             </div>
         </footer>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init({
+            once: false  // 🔄 animation will replay every time the element re-enters viewport
+            });
+        </script>    
     </body>
 </html>
