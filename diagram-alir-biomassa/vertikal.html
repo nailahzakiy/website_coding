@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Diagram Alir Produksi Biomassa</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h2>Diagram Alir Produksi Biomassa (Zona A-D)</h2>
+  <div class="mermaid">
+    graph TD
+      A1(Penyediaan Stek) --> A2(Pembukaan Lahan)
+      A2 --> A3(Pembersihan lahan)
+      A3 --> A4(Pembuatan bedengan)
+      A4 --> A5(Pembuatan jalur drainase)
+      A5 --> A6(Penanaman bibit pada bedengan)
+      A6 --> A7(Pemeliharaan tanaman)
+      A7 --> A8(Panen)
+      A8 --> A9(Daun kelor)
+      A9 --> A10(Pascapanen)
+
+      A10 --> A11(Pengeringan daun kelor)
+      A11 --> A12(Bag tea)
+      A11 --> A13(Daun kelor kering)
+      A13 --> A14(Maklon skincare)
+
+      A8 --> A15(Limbah organik)
+      A15 -.-> A16(Composting)
+      A16 -.-> A7(Pemeliharaan tanaman)  
+      B1(Persiapan kolam) --> B2(Penebaran benih)
+      B2 --> B3(Pembesaran dan perawatan)
+      B3 --> B4(Pemanenan ikan nila)
+      B4 --> B5(Ikan nila)
+      B3 --> B6(Biofilter)
+      B6 --> B7(Penampungan air bersih)
+      B7 --> A7
+
+      classDef optional stroke-dasharray: 5 5;
+      class A15,A16 optional;
+  </div>
+
+  <button onclick="download()">Download SVG</button>
+    <script>
+        function download() {
+        const svg = document.querySelector('svg');
+        const blob = new Blob([svg.outerHTML], { type: 'image/svg+xml;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'diagram-biomassa.svg';
+        a.click();
+        URL.revokeObjectURL(url);
+  }
+</script>
+</body>
+</html>
